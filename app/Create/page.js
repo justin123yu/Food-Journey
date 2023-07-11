@@ -1,10 +1,10 @@
 import React from "react"
 
-export default function Home() {
+export default function Create() {
   return (
     <main>
       <div>
-        <p>Hello World :D</p>
+        <p>Create a new Post</p>
       </div>
     </main>
   )

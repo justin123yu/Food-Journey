@@ -1,10 +1,10 @@
 import React from "react"
 
-export default function Home() {
+export default function Resturant() {
   return (
     <main>
       <div>
-        <p>Hello World :D</p>
+        <p>Display all the different resturants</p>
       </div>
     </main>
   )
