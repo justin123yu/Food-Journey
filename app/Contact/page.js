@@ -1,7 +1,11 @@
-export default function Contact(){
-    return(
-        <div>
-            <p>HELLO WORLD TESTING MY NAVIGATIONS</p>
-        </div>
+import React from "react"
+
+export default function Contact() {
+    return (
+        <main>
+            <div>
+                <p>Contact me at the following location</p>
+            </div>
+        </main>
     )
 }
