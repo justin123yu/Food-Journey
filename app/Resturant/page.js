@@ -1,18 +1,15 @@
+"use client"
 import React from "react"
 import "../styles/home.css"
+import useSWR from 'swr'
 
 export default function Resturant() {
-  async function getAirtable(){
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${process.env.AIR_TABLE_API}`
-      }
-    };
-    
-    const response = await fetch(`${process.env.AIR_TABLE_URL}`, options);
-    return response.json();
+  async function getData(){
+    const fetcher = (...args) => fetch(...args).then(res => res.json())
+    const { data, error, isLoading } = useSWR('/api/airtable', fetcher)
+    console.log(data);
   }
+  getData();  
   return (
     <main>
       <div>
