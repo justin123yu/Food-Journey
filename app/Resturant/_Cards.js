@@ -5,7 +5,7 @@ async function getData(){
     const options = {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${process.env.AIR_TABLE_API}`
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIR_TABLE_API}`
       }
     };
   
@@ -27,6 +27,7 @@ async function getData(){
         .then((data) => {
           setData(data.records)
           setLoading(false)
+          console.log(data);
         })
     }, [])
   
