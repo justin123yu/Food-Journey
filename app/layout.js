@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import Navbar from './component/navbar'
+import Navbar from './_component/navbar'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function RootLayout({ children }) {
