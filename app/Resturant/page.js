@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react"
+import React from "react"
 import "../styles/home.css"
 import Cards from "./_Cards"
 export default function Resturant() {
