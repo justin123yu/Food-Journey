@@ -37,9 +37,9 @@ export default function Resturant() {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-      {data.map((items) =>
-        <div className="col-4" key={items.id}>
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {data.map((items) =>
+        <div className="col" key={items.id}>
           <div className="card">
             {/* <Image className="card-img-top" src={items.fields.url} alt="Card image cap" width={500} height={500}/> */}
             <div className="card-body">
