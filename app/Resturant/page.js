@@ -7,7 +7,7 @@ export default function Resturant() {
   return (
     <main>
       <div>
-        <p>Resturants</p>
+        <h2 className="text-center">Resturants</h2>
         <Cards></Cards>
       </div>
     </main>
