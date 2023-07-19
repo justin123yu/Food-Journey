@@ -35,11 +35,11 @@ export default function Resturant() {
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
 
-
   return (
-    <div className="row row-cols-1 row-cols-md-3 g-4">
+    <div className="container-fluid">
+      <div className="row">
       {data.map((items) =>
-        <div className="col" key={items.id}>
+        <div className="col-4" key={items.id}>
           <div className="card">
             {/* <Image className="card-img-top" src={items.fields.url} alt="Card image cap" width={500} height={500}/> */}
             <div className="card-body">
@@ -49,5 +49,6 @@ export default function Resturant() {
           </div>
         </div>)
       }
+      </div>
     </div>);
 }
