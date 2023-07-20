@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    
+    images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'v5.airtableusercontent.com',
+        port: '',
+        pathname: '/v1/19/19/1689847200000/**',
+      },
+    ],
+  }}
 
 module.exports = nextConfig

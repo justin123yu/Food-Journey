@@ -28,7 +28,6 @@ export default function Resturant() {
       .then((data) => {
         setData(data.records)
         setLoading(false)
-        console.log(data.records[0].fields.Photo[0].thumbnails.large.url);
       })
   }, [])
 
@@ -41,7 +40,7 @@ export default function Resturant() {
         {data.map((items) =>
         <div className="col" key={items.id}>
           <div className="card">
-            {/* <Image className="card-img-top" src={items.fields.url} alt="Card image cap" width={500} height={500}/> */}
+            <Image className="card-img-top" src={items.fields.Photo[0].url} alt={items.fields.Name+" Photo"}  quality={70} width={300} height={300}/> 
             <div className="card-body">
               <h5 className="card-title text-center">{items.fields.Name}</h5>
               <p className="card-text">{items.fields.Comments}</p>
