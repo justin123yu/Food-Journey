@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Image from 'next/image';
 
 async function getData() {
   var records;
@@ -40,7 +39,7 @@ export default function Resturant() {
         {data.map((items) =>
         <div className="col" key={items.id}>
           <div className="card">
-            <Image className="card-img-top" src={items.fields.Photo[0].url} alt={items.fields.Name+" Photo"}  quality={70} width={300} height={300}/> 
+            <img className="card-img-top" src={items.fields.Photo[0].url} alt={items.fields.Name+" Photo"}  quality={70} width={300} height={300}/> 
             <div className="card-body">
               <h5 className="card-title text-center">{items.fields.Name}</h5>
               <p className="card-text">{items.fields.Comments}</p>
