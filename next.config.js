@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    
-    images: {
+  /* config options here */
+  reactStrictMode: true,
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'v5.airtableusercontent.com',
-        port: '',
-        pathname: '/v1/19/19/1689847200000/**',
+        port: '3000',
+        pathname: '/v1/19/19/**',
       },
     ],
-  }}
-
+  }
+}
+ 
 module.exports = nextConfig
