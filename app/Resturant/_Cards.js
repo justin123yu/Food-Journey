@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Image from 'next/image';
+import Link from 'next/link'
 
 async function getData() {
   var records;
@@ -44,6 +45,7 @@ export default function Resturant() {
             <div className="card-body">
               <h5 className="card-title text-center">{items.fields.Name}</h5>
               <p className="card-text">{items.fields.Comments}</p>
+              <Link className="btn btn-primary" href={{pathname:`/Resturant/${items.fields.Name}`}}> Details</Link>
             </div>
           </div>
         </div>)
