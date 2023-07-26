@@ -49,10 +49,10 @@ export default function Resturant() {
             <div className="card-body">
               <h5 className="card-title text-center">{items.fields.Name}</h5>
               <p className="card-text">{items.fields.Comments}</p>
-              <Link href={{
+              <Link className="btn btn-secondary" href={{
                 pathname: `/Resturant/${items.fields.Name}`,
                 query: {item: JSON.stringify(items.fields)}
-              }}> TEST </Link>
+              }}> Details </Link>
             </div>
           </div>
         </div>)
