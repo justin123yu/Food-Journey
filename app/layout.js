@@ -2,6 +2,11 @@ import Script from 'next/script';
 import Navbar from './_component/navbar'
 import "bootstrap/dist/css/bootstrap.min.css";
 
+export const metadata = {
+    title:"Food Journey App",
+    description: "Show cases resturants that I enjoy and been to."
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 async function getData() {
   var records;
@@ -22,7 +22,6 @@ export default function Resturant() {
 
   const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(false)
-  const router = useRouter();
 
   useEffect(() => {
     setLoading(true)
@@ -34,7 +33,7 @@ export default function Resturant() {
   }, [])
 
   function handleClick(event){
-    router.push(`Resturant/${event}`);
+    <Link href={`/Restruant/${event}`}></Link>
   }
 
   if (isLoading) return <p>Loading...</p>
@@ -50,7 +49,10 @@ export default function Resturant() {
             <div className="card-body">
               <h5 className="card-title text-center">{items.fields.Name}</h5>
               <p className="card-text">{items.fields.Comments}</p>
-              <button onClick={() => handleClick(items.id)}>Details</button>
+              <Link href={{
+                pathname: `/Resturant/${items.fields.Name}`,
+                query: {item: JSON.stringify(items.fields)}
+              }}> TEST </Link>
             </div>
           </div>
         </div>)
