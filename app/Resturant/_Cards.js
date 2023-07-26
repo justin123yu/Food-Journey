@@ -32,7 +32,7 @@ export default function Resturant() {
       })
   }, [])
 
-  function handleClick(event){
+  function handleClick(event) {
     <Link href={`/Restruant/${event}`}></Link>
   }
 
@@ -43,20 +43,20 @@ export default function Resturant() {
     <div className="container-fluid">
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {data.map((items) =>
-        <div className="col" key={items.id}>
-          <div className="card">
-            <Image className="card-img-top" src={items.fields.Photo[0].url} alt={items.fields.Name+" Photo"}  quality={70} width={300} height={300} priority /> 
-            <div className="card-body">
-              <h5 className="card-title text-center">{items.fields.Name}</h5>
-              <p className="card-text">{items.fields.Comments}</p>
-              <Link className="btn btn-secondary" href={{
-                pathname: `/Resturant/${items.fields.Name}`,
-                query: {item: JSON.stringify(items.fields)}
-              }}> Details </Link>
+          <div className="col" key={items.id}>
+            <div className="card h-100">
+              <Image className="card-img-top" src={items.fields.Photo[0].url} alt={items.fields.Name + " Photo"} quality={70} width={300} height={300} priority />
+              <div className="card-body">
+                <h5 className="card-title text-center">{items.fields.Name}</h5>
+                <p className="card-text">{items.fields.Comments}</p>
+                <div className="text-center"> <Link className="btn btn-secondary text-center" href={{
+                  pathname: `/Resturant/${items.fields.Name}`,
+                  query: { item: JSON.stringify(items.fields) }
+                }}> Details </Link> </div>
+              </div>
             </div>
-          </div>
-        </div>)
-      }
+          </div>)
+        }
       </div>
     </div>);
 }

@@ -7,7 +7,6 @@ export default function DetailedResturants() {
     const searchParams = useSearchParams();
     const object = searchParams.get("item");
     const resturant = JSON.parse(object);
-    console.log(resturant);
 
 
     return (<main>
@@ -17,7 +16,7 @@ export default function DetailedResturants() {
                 <Image className="card-img-top" src={resturant.Photo[0].url} alt={resturant.Name+" Photo"}  quality={70} width={300} height={300} priority /> 
                 </div>
                 <div className="col-md-8">
-                    <div className="card-body">
+                    <div className="card-body text-left">
                         <h5 className="card-title">{resturant.Name}</h5>
                         <p className="card-text">{resturant.Location}</p>
                         <p className="card-text">{resturant.Comments}</p>
