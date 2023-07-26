@@ -49,7 +49,8 @@ export default function Resturant() {
               <div className="card-body">
                 <h5 className="card-title text-center">{items.fields.Name}</h5>
                 <p className="card-text">{items.fields.Comments}</p>
-                <div className="text-center"> <Link className="btn btn-secondary text-center" href={{
+                <div className="text-center">
+                  <Link className="btn btn-secondary text-center" href={{
                   pathname: `/Resturant/${items.fields.Name}`,
                   query: { item: JSON.stringify(items.fields) }
                 }}> Details </Link> </div>
