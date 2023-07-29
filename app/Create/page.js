@@ -10,30 +10,28 @@ export default function Create() {
   async function submitResturant(url) {
     const data = {
       "fields": {
-        "Name": `${name}`,
-        "Location": `${location}`,
+        "Name": name,
+        "Location": location,
         "Photo": [
           {
-            "url": `${url}`
+            "url": url
           }
         ],
         "Rating": rating,
-        "Comments": `${comment}`
+        "Comments": comment
       }
     }
     const options = {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIR_TABLE_API}`,
-        "Content-Type": "application/json"
+        "Accept": "application/json",
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     };
 
-    await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options).then(() => {
-      console.log("Submited to Airtable");
-    }).catch((err) => console.error(err));
-
+    await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options)
   }
 
   async function uploadToImgur(e) {
@@ -71,7 +69,7 @@ export default function Create() {
           </div>
           <div className="row mb-3">
             <label className="form-label">Rating</label>
-            <input type="number" value={rating} onChange={e => setRating(e.target.value)} className="form-control" id="Rating"></input>
+            <input type="number" value={rating} onChange={e => setRating(parseInt(e.target.value))} className="form-control" id="Rating"></input>
           </div>
           <div className="row mb-3">
             <label className="form-label">Comments</label>
