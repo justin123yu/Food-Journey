@@ -51,8 +51,7 @@ export default function Create() {
       .then(response => response.json())
       .then(result => url = result.data.link)
       .catch(error => console.log('error', error));
-      console.log(url);
-    // await submitResturant(photo)
+    await submitResturant(url);
   }
 
   return (
