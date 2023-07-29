@@ -6,38 +6,22 @@ export default function Create() {
   const [photo, setPhoto] = useState();
   const [rating, setRating] = useState(0);
   const [comment, setComments] = useState("");
-  const data = {
-    "fields": {
-      "Name": `${name}`,
-      "Location": `${location}`,
-      "Photo": [
-        {
-          "url": `${photo}`
-        }
-      ],
-      "Rating": `${rating}`,
-      "Comments": `${comment}`
-    }
-  }
 
-  function uploadToImgur(e){
-    e.preventDefault();
-    const myHeader = new Headers();
-    myHeader.append("Authorization", "Bearer 8cd6efc7cd600ee40c54a69570a83264971adc9c")
-    const formdata = new FormData()
-    formdata.append("image", photo)
-    const requestOptions = {
-      method: "POST",
-      headers: myHeader,
-      body: formdata
-    }
 
-    fetch("https://api.imgur.com/3/image", requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-  }
-  async function submitResturant() {
+  async function submitResturant(url) {
+    const data = {
+      "fields": {
+        "Name": `${name}`,
+        "Location": `${location}`,
+        "Photo": [
+          {
+            "url": `${url}`
+          }
+        ],
+        "Rating": `${rating}`,
+        "Comments": `${comment}`
+      }
+    }
     const options = {
       method: 'POST',
       headers: {
@@ -46,20 +30,59 @@ export default function Create() {
       },
       body: JSON.stringify(data)
     };
-    // await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options);
-    console.log(data);
+
+    await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options).then(() => {
+      console.log("Submited to Airtable");
+    }).catch((err) => console.error(err));
+
+  }
+
+  async function uploadToImgur(e) {
+    e.preventDefault();
+    const myHeader = new Headers();
+    myHeader.append("Authorization", `Bearer ${NEXT_PUBLIC_IMGUR_KEY}`)
+    const formdata = new FormData()
+    formdata.append("image", photo)
+    const requestOptions = {
+      method: "POST",
+      headers: myHeader,
+      body: formdata
+    }
+
+    // await fetch("https://api.imgur.com/3/image", requestOptions)
+    //   .then(response => response.json())
+    //   .then(result => setPhoto(result.data.link))
+    //   .catch(error => console.log('error', error));
+
+    // await submitResturant(photo)
   }
 
   return (
-    <main>  
+    <main>
       <div>
         <p>Post Restaurant</p>
         <form onSubmit={uploadToImgur}>
-        <div className="file-uploader">
+          <div className="row mb-3">
+            <label className="form-label">Name of Restaurant</label>
+            <input type="text" className="form-control" id="Name"></input>
+          </div>
+          <div className="row mb-3">
+            <label className="form-label">Location</label>
+            <input type="text" className="form-control" id="Location"></input>
+          </div>
+          <div className="row mb-3">
+            <label className="form-label">Rating</label>
+            <input type="number" className="form-control" id="Rating"></input>
+          </div>
+          <div className="row mb-3">
+            <label className="form-label">Comments</label>
+            <input type="text" className="form-control" id="Comments"></input>
+          </div>
+          <div className="row mb-3">
             <input type="file" onChange={e => setPhoto(e.target.files[0])}></input>
-        </div>
-        <button type="submit">Submit</button>
+          </div>
         </form>
+        <button className="btn btn-primary text-center" type="submit">Submit</button>
       </div>
     </main>
   )
