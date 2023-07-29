@@ -45,12 +45,13 @@ export default function Create() {
       headers: myHeader,
       body: formdata
     }
+    var url = "";
 
     await fetch("https://api.imgur.com/3/image", requestOptions)
       .then(response => response.json())
-      .then(result => setPhoto(result.data.link))
+      .then(result => url = result.data.link)
       .catch(error => console.log('error', error));
-      console.log(photo);
+      console.log(url);
     // await submitResturant(photo)
   }
 
