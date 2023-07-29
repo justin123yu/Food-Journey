@@ -17,7 +17,7 @@ export default function Create() {
             "url": `${url}`
           }
         ],
-        "Rating": `${rating}`,
+        "Rating": rating,
         "Comments": `${comment}`
       }
     }
