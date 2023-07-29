@@ -29,7 +29,7 @@ export default function Create() {
       },
       body: JSON.stringify(data)
     };
-    
+
     await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options).then(() => {
       console.log("Submited to Airtable");
     }).catch((err) => console.error(err));
@@ -39,7 +39,7 @@ export default function Create() {
   async function uploadToImgur(e) {
     e.preventDefault();
     const myHeader = new Headers();
-    myHeader.append("Authorization", `Bearer ${NEXT_PUBLIC_IMGUR_KEY}`)
+    myHeader.append("Authorization", `Bearer ${process.env.NEXT_PUBLIC_IMGUR_KEY}`)
     const formdata = new FormData()
     formdata.append("image", photo)
     const requestOptions = {
