@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react"
+import { useRouter } from "next/navigation";
 export default function Create() {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -7,12 +8,15 @@ export default function Create() {
   const [rating, setRating] = useState(0);
   const [key, setKey] = useState("");
   const [comment, setComments] = useState("");
+  const [error, setError] = useState(false);
+  const router = useRouter();
 
   async function submitResturant(e) {
     e.preventDefault();
     if (key !== process.env.NEXT_PUBLIC_SECRET) {
-      console.log("WRONG PASSWORD :D");
+      setError(true);
     } else {
+      setError(false);
       const url = await uploadToImgur();
       const data = {
         "fields": {
@@ -39,13 +43,18 @@ export default function Create() {
 
       await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options)
         .then(response => response.json())
-        .then((response) => console.log("Data Sent to the server" + response.status))
+        .then(() => {
+          alert("Data Sent to the server");
+          router.push("/Restaurants")
+          
+        })
         .catch(err => {
           console.error(err)
         })
     }
 
   }
+
 
   async function uploadToImgur() {
     const myHeader = new Headers();
@@ -63,6 +72,12 @@ export default function Create() {
       .then(result => url = result.data.link)
       .catch(error => console.error('error', error));
     return url;
+  }
+
+  function ErrorMessage({ displayError }) {
+    if (displayError) {
+      return (<div> <h2> Wrong Passcode</h2></div>)
+    }
   }
 
   return (
@@ -91,6 +106,7 @@ export default function Create() {
             <input type="file" accept="image/*" onChange={e => setPhoto(e.target.files[0])}></input>
           </div>
           <div className="row mb-3">
+            <ErrorMessage displayError={error}></ErrorMessage>
             <label className="form-label">Access Code</label>
             <input type="text" value={key} onChange={e => setKey(e.target.value)} className="form-control" id="Rating" ></input>
           </div>

@@ -32,9 +32,6 @@ export default function Resturant() {
       })
   }, [])
 
-  function handleClick(event) {
-    <Link href={`/Restruant/${event}`}></Link>
-  }
 
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
@@ -51,7 +48,7 @@ export default function Resturant() {
                 <p className="card-text">{items.fields.Comments}</p>
                 <div className="text-center">
                   <Link className="btn btn-secondary text-center" href={{
-                  pathname: `/Resturant/${items.fields.Name}`,
+                  pathname: `/Restaurants/${items.fields.Name}`,
                   query: { item: JSON.stringify(items.fields) }
                 }}> Details </Link> </div>
               </div>
