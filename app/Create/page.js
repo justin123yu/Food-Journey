@@ -37,8 +37,9 @@ export default function Create() {
         body: JSON.stringify(data)
       };
 
-      await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options).then(response => response.json())
-        .then(() => console, log("Data Sent to the server"))
+      await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options)
+        .then(response => response.json())
+        .then((response) => console.log("Data Sent to the server" + response.status))
         .catch(err => {
           console.error(err)
         })
@@ -60,7 +61,7 @@ export default function Create() {
     await fetch("https://api.imgur.com/3/image", requestOptions)
       .then(response => response.json())
       .then(result => url = result.data.link)
-      .catch(error => console.log('error', error));
+      .catch(error => console.error('error', error));
     return url;
   }
 
