@@ -5,37 +5,48 @@ export default function Create() {
   const [location, setLocation] = useState("");
   const [photo, setPhoto] = useState();
   const [rating, setRating] = useState(0);
+  const [key, setKey] = useState("");
   const [comment, setComments] = useState("");
 
-  async function submitResturant(url) {
-    const data = {
-      "fields": {
-        "Name": name,
-        "Location": location,
-        "Photo": [
-          {
-            "url": url
-          }
-        ],
-        "Rating": rating,
-        "Comments": comment
+  async function submitResturant(e) {
+    e.preventDefault();
+    if (key !== process.env.NEXT_PUBLIC_SECRET) {
+      console.log("WRONG PASSWORD :D");
+    } else {
+      const url = await uploadToImgur();
+      const data = {
+        "fields": {
+          "Name": name,
+          "Location": location,
+          "Photo": [
+            {
+              "url": url
+            }
+          ],
+          "Rating": parseInt(rating),
+          "Comments": comment
+        }
       }
-    }
-    const options = {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIR_TABLE_API}`,
-        "Accept": "application/json",
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    };
+      const options = {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIR_TABLE_API}`,
+          "Accept": "application/json",
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      };
 
-    await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options)
+      await fetch("https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant", options).then(response => response.json())
+        .then(() => console, log("Data Sent to the server"))
+        .catch(err => {
+          console.error(err)
+        })
+    }
+
   }
 
-  async function uploadToImgur(e) {
-    e.preventDefault();
+  async function uploadToImgur() {
     const myHeader = new Headers();
     myHeader.append("Authorization", `Bearer ${process.env.NEXT_PUBLIC_IMGUR_KEY}`)
     const formdata = new FormData()
@@ -46,21 +57,21 @@ export default function Create() {
       body: formdata
     }
     var url = "";
-
     await fetch("https://api.imgur.com/3/image", requestOptions)
       .then(response => response.json())
       .then(result => url = result.data.link)
       .catch(error => console.log('error', error));
-    await submitResturant(url);
+    return url;
   }
 
   return (
     <main>
       <div>
         <p>Post Restaurant</p>
-        <form onSubmit={uploadToImgur}>
+        <form onSubmit={submitResturant}>
           <div className="row mb-3">
             <label className="form-label">Name of Restaurant</label>
+
             <input type="text" value={name} onChange={e => setName(e.target.value)} className="form-control" id="Name"></input>
           </div>
           <div className="row mb-3">
@@ -69,7 +80,7 @@ export default function Create() {
           </div>
           <div className="row mb-3">
             <label className="form-label">Rating</label>
-            <input type="number" value={rating} onChange={e => setRating(parseInt(e.target.value))} className="form-control" id="Rating"></input>
+            <input type="number" value={rating} onChange={e => setRating(e.target.value)} className="form-control" id="Rating" min="0" max="5" ></input>
           </div>
           <div className="row mb-3">
             <label className="form-label">Comments</label>
@@ -77,6 +88,10 @@ export default function Create() {
           </div>
           <div className="row mb-3">
             <input type="file" accept="image/*" onChange={e => setPhoto(e.target.files[0])}></input>
+          </div>
+          <div className="row mb-3">
+            <label className="form-label">Access Code</label>
+            <input type="text" value={key} onChange={e => setKey(e.target.value)} className="form-control" id="Rating" ></input>
           </div>
           <button className="btn btn-primary text-center" type="submit">Submit</button>
         </form>
