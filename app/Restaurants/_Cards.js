@@ -49,7 +49,7 @@ export default function Resturant() {
                 <div className="text-center">
                   <Link className="btn btn-secondary text-center" href={{
                   pathname: `/Restaurants/${items.fields.Name}`,
-                  query: { item: JSON.stringify(items.fields) }
+                  query: { item: JSON.stringify(items) }
                 }}> Details </Link> </div>
               </div>
             </div>

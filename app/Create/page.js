@@ -108,7 +108,7 @@ export default function Create() {
           <div className="row mb-3">
             <ErrorMessage displayError={error}></ErrorMessage>
             <label className="form-label">Access Code</label>
-            <input type="text" value={key} onChange={e => setKey(e.target.value)} className="form-control" id="Rating" ></input>
+            <input type="text" value={key} onChange={e => setKey(e.target.value)} className="form-control" id="code" ></input>
           </div>
           <button className="btn btn-primary text-center" type="submit">Submit</button>
         </form>
