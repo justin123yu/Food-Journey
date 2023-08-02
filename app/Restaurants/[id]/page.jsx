@@ -46,10 +46,10 @@ export default function DetailedResturants() {
     return (
         <div className="card mb-3">
             <div className="row g-0">
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <Image className="card-img-top" src={restaurant.fields.Photo[0].url} alt={restaurant.fields.Name + " Photo"} quality={70} width={300} height={300} priority />
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-9 px-3 ">
                     <div id="detailedCard" className="card-body text-left">
                         <h5 className="card-title">{restaurant.fields.Name}</h5>
                         <p className="card-text">{restaurant.fields.Location}</p>
@@ -61,7 +61,7 @@ export default function DetailedResturants() {
                             <br></br>
                             <input type="text" value={key} onChange={e => setKey(e.target.value)} id="code" ></input>
                             <br></br>
-                            <button className="btn btn-primary" onClick={deleteRecord}>Submit</button>
+                            <button className="btn btn-primary" onClick={deleteRecord}>Delete</button>
                         </div>
                     </div>
                 </div>
