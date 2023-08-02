@@ -84,7 +84,7 @@ export default function Create() {
     <main>
       <div>
         <p>Post Restaurant</p>
-        <form onSubmit={submitResturant}>
+        {/* <form onSubmit={submitResturant}>
           <div className="row mb-3">
             <label className="form-label">Name of Restaurant</label>
 
@@ -108,10 +108,13 @@ export default function Create() {
           <div className="row mb-3">
             <ErrorMessage displayError={error}></ErrorMessage>
             <label className="form-label">Access Code</label>
-            <input type="text" value={key} onChange={e => setKey(e.target.value)} className="form-control" id="Rating" ></input>
+            <input type="text" value={key} onChange={e => setKey(e.target.value)} className="form-control" id="code" ></input>
           </div>
           <button className="btn btn-primary text-center" type="submit">Submit</button>
-        </form>
+        </form> */}
+        <iframe src="https://airtable.com/appWF1wQ4ozIpCeq3/shrftNo8gtCahNnhh" height={300}>
+
+        </iframe>
       </div>
     </main>
   )
