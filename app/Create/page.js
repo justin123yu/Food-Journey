@@ -7,7 +7,7 @@ export default function Create() {
 
   return (
     <main>
-      <Script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></Script>
+      <Script src="https://static.airtable.com/js/embed/embed_snippet_v1.js" crossOrigin="anonymous"></Script>
       <iframe class="airtable-embed airtable-dynamic-height" 
       src="https://airtable.com/embed/appWF1wQ4ozIpCeq3/shrftNo8gtCahNnhh?backgroundColor=green" 
        onmousewheel="" 
