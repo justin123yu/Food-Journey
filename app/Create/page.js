@@ -112,7 +112,7 @@ export default function Create() {
           </div>
           <button className="btn btn-primary text-center" type="submit">Submit</button>
         </form> */}
-        <iframe src="https://airtable.com/appWF1wQ4ozIpCeq3/shrftNo8gtCahNnhh" height={300}>
+        <iframe src="https://airtable.com/embed/appWF1wQ4ozIpCeq3/shrftNo8gtCahNnhh">
 
         </iframe>
       </div>
