@@ -11,7 +11,7 @@ async function getData() {
     }
   };
 
-  await fetch('https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant?pageSize=20', options)
+  await fetch('https://api.airtable.com/v0/appWF1wQ4ozIpCeq3/Resturant?sort%5B0%5D%5Bfield%5D=Name&sort%5B0%5D%5Bdirection%5D=asc', options)
     .then(response => response.json())
     .then(data => records = data)
     .catch(err => console.error(err));
