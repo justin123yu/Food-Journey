@@ -16,9 +16,6 @@ export default function Navbar() {
           <li className="nav-item">
             <Link className="nav-link" href="/Create">Create</Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" href="/Contact">Contact</Link>
-          </li>
         </ul>
       </div>
     </nav>

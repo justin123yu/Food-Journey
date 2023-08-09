@@ -17,3 +17,7 @@ nav{
     z-index: 1;
 }
 
+#Error{
+    width: 10rem;
+    padding-left: 10px;
+}
