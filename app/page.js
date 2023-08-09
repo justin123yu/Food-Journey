@@ -13,7 +13,9 @@ export default function Home() {
         sizes="100vw"
         alt="Background picture">
         </Image>
-        <h3 className="landingText mt-4 text-dark">Welcome to my Food Journey</h3>
+        <h2 className="landingText mt-4 text-dark">Welcome to my Food Journey</h2>
+        <p className="landingText mt-4 text-dark"> This website is created to showcase Restaurants that I liked</p>
+        <p className="landingText text-dark">Click on Restaurants to see more !</p>
       </div>
     </main>
   )

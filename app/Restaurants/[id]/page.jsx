@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSearchParams, useRouter } from 'next/navigation';
 
 import "../../styles/home.css"
+import Resturant from "../_Cards";
 
 export default function DetailedResturants() {
 
@@ -51,10 +52,8 @@ export default function DetailedResturants() {
 
     function Map({ display }) {
         if (display) {
-            if(restaurant.fields.Map == ""){
-                return<div>
-                    <h3>Map is unavailable</h3>
-                </div>
+            if(restaurant.fields.Map === undefined){
+                return (<div><h5>Map is unavailable</h5></div>);
             }
             return <div className="row">
                 <iframe
@@ -83,7 +82,7 @@ export default function DetailedResturants() {
                             <p className="card-text"><small className="text-body-secondary">Rating: {restaurant.fields.Rating}</small></p>
                             <div >
                                 <ErrorMessage displayError={error}></ErrorMessage>
-                                <label >Access Code</label>
+                                <label >Delete Code</label>
                                 <br></br>
                                 <input type="password" value={key} onChange={e => setKey(e.target.value)} id="code" ></input>
                                 <br></br>
