@@ -51,6 +51,11 @@ export default function DetailedResturants() {
 
     function Map({ display }) {
         if (display) {
+            if(restaurant.fields.Map == ""){
+                return<div>
+                    <h3>Map is unavailable</h3>
+                </div>
+            }
             return <div className="row">
                 <iframe
                     src={restaurant.fields.Map}
@@ -80,7 +85,7 @@ export default function DetailedResturants() {
                                 <ErrorMessage displayError={error}></ErrorMessage>
                                 <label >Access Code</label>
                                 <br></br>
-                                <input type="text" value={key} onChange={e => setKey(e.target.value)} id="code" ></input>
+                                <input type="password" value={key} onChange={e => setKey(e.target.value)} id="code" ></input>
                                 <br></br>
                                 <button className="btn btn-secondary mt-3" onClick={deleteRecord}>Delete</button>
                             </div>

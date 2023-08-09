@@ -13,7 +13,7 @@ export default function Home() {
         sizes="100vw"
         alt="Background picture">
         </Image>
-        <h5 className="landingText mt-5 text-white">Welcome to my Food Journey</h5>
+        <h3 className="landingText mt-4 text-dark">Welcome to my Food Journey</h3>
       </div>
     </main>
   )
