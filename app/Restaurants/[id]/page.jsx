@@ -19,10 +19,10 @@ export default function DetailedResturants() {
     const handleClick = () => {
         setToggle(!toggle);
     }
-
+//process.env.NEXT_PUBLIC_SECRET
     async function deleteRecord(event) {
         event.preventDefault();
-        if (key !== process.env.NEXT_PUBLIC_SECRET) {
+        if (key !== "123") {
             setError(true);
         } else {
             setError(false);
