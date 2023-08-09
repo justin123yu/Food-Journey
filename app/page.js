@@ -6,16 +6,14 @@ export default function Home() {
   return (
     <main>
       <div>
-        {/* <Image
+        <Image
         className="landingImage"
         src={background}
-        quality={100}
         fill
         sizes="100vw"
-        objectFit="cover"
         alt="Background picture">
-        </Image> */}
-        <p className="landingText">Welcome to my Food Journey</p>
+        </Image>
+        <h5 className="landingText mt-5 text-white">Welcome to my Food Journey</h5>
       </div>
     </main>
   )
